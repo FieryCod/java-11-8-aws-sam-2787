@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+
+java8.jar
+java11.jar
+target
+packaged.yml
+.cpcache

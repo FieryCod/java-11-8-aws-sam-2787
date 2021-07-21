@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  Timeout:
+    Type: Number
+    Default: 40
+  MemorySize:
+    Type: Number
+    Default: 2000
+
+Globals:
+  Function:
+    Timeout: !Ref Timeout
+    MemorySize: !Ref MemorySize
+
+Resources:
+  ClojureOnJava8:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ClojureOnJava8
+      CodeUri: ./java8.jar
+      Runtime: java8
+      Handler: example.lambda
+      Events:
+        HelloEvent:
+          Type: Api
+          Properties:
+            Path: /java8
+            Method: get
+
+  ClojureOnJava11:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ClojureOnJava11
+      CodeUri: ./java11.jar
+      Runtime: java11
+      Handler: example.lambda
+      Events:
+        HelloEvent:
+          Type: Api
+          Properties:
+            Path: /java11
+            Method: get
